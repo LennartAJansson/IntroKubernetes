@@ -1,0 +1,265 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    checksum/config: 611606270530eb439cd32107f067e78979e5403560784987a8b965b9a352c7ea
+    prometheus.io/port: http-metrics
+    prometheus.io/scrape: "true"
+  creationTimestamp: "2021-05-27T14:46:09Z"
+  generateName: loki-
+  labels:
+    app: loki
+    controller-revision-hash: loki-d4f85d67c
+    name: loki
+    release: loki
+    statefulset.kubernetes.io/pod-name: loki-0
+  name: loki-0
+  namespace: monitoring
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: loki
+    uid: 1c8fd680-34c5-49e0-af19-24592427e57b
+  resourceVersion: "1132413"
+  uid: d42bde0d-96bb-4b6c-b9de-59d398ec6dd7
+spec:
+  affinity: {}
+  containers:
+  - args:
+    - -config.file=/etc/loki/loki.yaml
+    image: grafana/loki:2.2.0
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /ready
+        port: http-metrics
+        scheme: HTTP
+      initialDelaySeconds: 45
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: loki
+    ports:
+    - containerPort: 3100
+      name: http-metrics
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /ready
+        port: http-metrics
+        scheme: HTTP
+      initialDelaySeconds: 45
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    securityContext:
+      readOnlyRootFilesystem: true
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/loki
+      name: config
+    - mountPath: /data
+      name: storage
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: loki-token-xnw9d
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostname: loki-0
+  nodeName: k3d-k3slocal-server-0
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 10001
+    runAsGroup: 10001
+    runAsNonRoot: true
+    runAsUser: 10001
+  serviceAccount: loki
+  serviceAccountName: loki
+  subdomain: loki-headless
+  terminationGracePeriodSeconds: 4800
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: config
+    secret:
+      defaultMode: 420
+      secretName: loki
+  - emptyDir: {}
+    name: storage
+  - name: loki-token-xnw9d
+    secret:
+      defaultMode: 420
+      secretName: loki-token-xnw9d
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2021-05-27T14:46:09Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2021-05-27T14:47:15Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2021-05-27T14:47:15Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2021-05-27T14:46:09Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://34448c2e8bfcf8a7a2ebeeb55818be89697f0493df0ecac296dc925b797a1942
+    image: docker.io/grafana/loki:2.2.0
+    imageID: docker.io/grafana/loki@sha256:83649aa867ffdc353cea17e9465bfc26b1f172c78c19ac906400b5028576c3f3
+    lastState: {}
+    name: loki
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2021-05-27T14:46:10Z"
+  hostIP: 172.19.0.2
+  phase: Running
+  podIP: 10.42.0.130
+  podIPs:
+  - ip: 10.42.0.130
+  qosClass: BestEffort
+  startTime: "2021-05-27T14:46:09Z"
+
+---
+
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    meta.helm.sh/release-name: loki
+    meta.helm.sh/release-namespace: monitoring
+  creationTimestamp: "2021-05-27T14:46:09Z"
+  generation: 1
+  labels:
+    app: loki
+    app.kubernetes.io/managed-by: Helm
+    chart: loki-2.5.0
+    heritage: Helm
+    release: loki
+  name: loki
+  namespace: monitoring
+  resourceVersion: "1132416"
+  uid: 1c8fd680-34c5-49e0-af19-24592427e57b
+spec:
+  podManagementPolicy: OrderedReady
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: loki
+      release: loki
+  serviceName: loki-headless
+  template:
+    metadata:
+      annotations:
+        checksum/config: 611606270530eb439cd32107f067e78979e5403560784987a8b965b9a352c7ea
+        prometheus.io/port: http-metrics
+        prometheus.io/scrape: "true"
+      creationTimestamp: null
+      labels:
+        app: loki
+        name: loki
+        release: loki
+    spec:
+      affinity: {}
+      containers:
+      - args:
+        - -config.file=/etc/loki/loki.yaml
+        image: grafana/loki:2.2.0
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ready
+            port: http-metrics
+            scheme: HTTP
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: loki
+        ports:
+        - containerPort: 3100
+          name: http-metrics
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ready
+            port: http-metrics
+            scheme: HTTP
+          initialDelaySeconds: 45
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        securityContext:
+          readOnlyRootFilesystem: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/loki
+          name: config
+        - mountPath: /data
+          name: storage
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 10001
+        runAsGroup: 10001
+        runAsNonRoot: true
+        runAsUser: 10001
+      serviceAccount: loki
+      serviceAccountName: loki
+      terminationGracePeriodSeconds: 4800
+      volumes:
+      - name: config
+        secret:
+          defaultMode: 420
+          secretName: loki
+      - emptyDir: {}
+        name: storage
+  updateStrategy:
+    type: RollingUpdate
+status:
+  collisionCount: 0
+  currentReplicas: 1
+  currentRevision: loki-d4f85d67c
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updateRevision: loki-d4f85d67c
+  updatedReplicas: 1

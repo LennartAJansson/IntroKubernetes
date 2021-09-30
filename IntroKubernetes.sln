@@ -1,0 +1,145 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31717.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{41B36EDB-DD4F-4D5E-9C16-61E9D2B2F48D}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+		Build.ps1 = Build.ps1
+		Deploy.ps1 = Deploy.ps1
+		Deploy.yaml = Deploy.yaml
+		InstallTools.ps1 = InstallTools.ps1
+		SetupKubernetes.ps1 = SetupKubernetes.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{7FCE376B-5521-4823-A1DC-032B273F3360}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "prometheus", "prometheus", "{650D94D6-89F6-4AB8-A725-901A57697A42}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\prometheus\clusterrole.yaml = deploy\prometheus\clusterrole.yaml
+		deploy\prometheus\configmap.yaml = deploy\prometheus\configmap.yaml
+		deploy\prometheus\deployment.yaml = deploy\prometheus\deployment.yaml
+		deploy\prometheus\ingress.yaml = deploy\prometheus\ingress.yaml
+		deploy\prometheus\kustomization.yaml = deploy\prometheus\kustomization.yaml
+		deploy\prometheus\namespace.yaml = deploy\prometheus\namespace.yaml
+		deploy\prometheus\service.yaml = deploy\prometheus\service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "all", "all", "{180AE59C-5818-42BD-BBEA-50D745160CA9}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\all\kustomization.yaml = deploy\all\kustomization.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{67385E57-DD93-4CAC-A023-E2955030BA5A}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\common\configmap.yaml = deploy\common\configmap.yaml
+		deploy\common\kustomization.yaml = deploy\common\kustomization.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "loki", "loki", "{D136756A-3A50-449D-9126-BB3451E70FA0}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\loki\deployment.yaml = deploy\loki\deployment.yaml
+		deploy\loki\ingress.yaml = deploy\loki\ingress.yaml
+		deploy\loki\kustomization.yaml = deploy\loki\kustomization.yaml
+		deploy\loki\namespace.yaml = deploy\loki\namespace.yaml
+		deploy\loki\service.yaml = deploy\loki\service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grafana", "grafana", "{4FEDF030-2D33-4178-A8B2-9906348ABD41}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\grafana\configmap.yaml = deploy\grafana\configmap.yaml
+		deploy\grafana\deployment.yaml = deploy\grafana\deployment.yaml
+		deploy\grafana\ingress.yaml = deploy\grafana\ingress.yaml
+		deploy\grafana\kustomization.yaml = deploy\grafana\kustomization.yaml
+		deploy\grafana\namespace.yaml = deploy\grafana\namespace.yaml
+		deploy\grafana\service.yaml = deploy\grafana\service.yaml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmhiExtractor", "SmhiExtractor\SmhiExtractor.csproj", "{14368C77-9E1B-46AC-BB7F-1F80EA78EE3B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmhiApi", "SmhiApi\SmhiApi.csproj", "{0C84B368-3074-488C-8CE8-5F45ABE80270}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherContracts", "WeatherContracts\WeatherContracts.csproj", "{AF7FD4AE-08D6-4005-9593-1FF003DD10BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "smhiextractor", "smhiextractor", "{C81F57C0-A5B0-4CD8-982E-E672F4A636E0}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\smhiextractor\deployment.yaml = deploy\smhiextractor\deployment.yaml
+		deploy\smhiextractor\ingress.yaml = deploy\smhiextractor\ingress.yaml
+		deploy\smhiextractor\kustomization.yaml = deploy\smhiextractor\kustomization.yaml
+		deploy\smhiextractor\namespace.yaml = deploy\smhiextractor\namespace.yaml
+		deploy\smhiextractor\service.yaml = deploy\smhiextractor\service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "smhiapi", "smhiapi", "{AB5005AC-5900-41D5-A63A-1D7CB6AC1497}"
+	ProjectSection(SolutionItems) = preProject
+		deploy\smhiapi\deployment.yaml = deploy\smhiapi\deployment.yaml
+		deploy\smhiapi\ingress.yaml = deploy\smhiapi\ingress.yaml
+		deploy\smhiapi\kustomization.yaml = deploy\smhiapi\kustomization.yaml
+		deploy\smhiapi\namespace.yaml = deploy\smhiapi\namespace.yaml
+		deploy\smhiapi\service.yaml = deploy\smhiapi\service.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{1AF5C60A-98A7-4601-87E5-B8CF255666B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extractor", "Extractor", "{BDEC8325-1748-4C8F-8079-62DCA800ED1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{BA61C085-323E-4C69-952F-8C16899BC524}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{DA9518C1-9BAF-412C-871C-AFAD3160BBE6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmhiDb", "SmhiDb\SmhiDb.csproj", "{60FEDFE5-6B27-4CB9-920C-01C4229C61D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi", "WeatherApi\WeatherApi.csproj", "{FAEC212C-5F7E-4F70-9B8E-91EFB8587FF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14368C77-9E1B-46AC-BB7F-1F80EA78EE3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14368C77-9E1B-46AC-BB7F-1F80EA78EE3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14368C77-9E1B-46AC-BB7F-1F80EA78EE3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14368C77-9E1B-46AC-BB7F-1F80EA78EE3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C84B368-3074-488C-8CE8-5F45ABE80270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C84B368-3074-488C-8CE8-5F45ABE80270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C84B368-3074-488C-8CE8-5F45ABE80270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C84B368-3074-488C-8CE8-5F45ABE80270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF7FD4AE-08D6-4005-9593-1FF003DD10BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF7FD4AE-08D6-4005-9593-1FF003DD10BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF7FD4AE-08D6-4005-9593-1FF003DD10BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF7FD4AE-08D6-4005-9593-1FF003DD10BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60FEDFE5-6B27-4CB9-920C-01C4229C61D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60FEDFE5-6B27-4CB9-920C-01C4229C61D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60FEDFE5-6B27-4CB9-920C-01C4229C61D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60FEDFE5-6B27-4CB9-920C-01C4229C61D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAEC212C-5F7E-4F70-9B8E-91EFB8587FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAEC212C-5F7E-4F70-9B8E-91EFB8587FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAEC212C-5F7E-4F70-9B8E-91EFB8587FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAEC212C-5F7E-4F70-9B8E-91EFB8587FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{650D94D6-89F6-4AB8-A725-901A57697A42} = {7FCE376B-5521-4823-A1DC-032B273F3360}
+		{180AE59C-5818-42BD-BBEA-50D745160CA9} = {7FCE376B-5521-4823-A1DC-032B273F3360}
+		{67385E57-DD93-4CAC-A023-E2955030BA5A} = {7FCE376B-5521-4823-A1DC-032B273F3360}
+		{D136756A-3A50-449D-9126-BB3451E70FA0} = {7FCE376B-5521-4823-A1DC-032B273F3360}
+		{4FEDF030-2D33-4178-A8B2-9906348ABD41} = {7FCE376B-5521-4823-A1DC-032B273F3360}
+		{14368C77-9E1B-46AC-BB7F-1F80EA78EE3B} = {BDEC8325-1748-4C8F-8079-62DCA800ED1D}
+		{0C84B368-3074-488C-8CE8-5F45ABE80270} = {1AF5C60A-98A7-4601-87E5-B8CF255666B4}
+		{AF7FD4AE-08D6-4005-9593-1FF003DD10BD} = {BA61C085-323E-4C69-952F-8C16899BC524}
+		{C81F57C0-A5B0-4CD8-982E-E672F4A636E0} = {7FCE376B-5521-4823-A1DC-032B273F3360}
+		{AB5005AC-5900-41D5-A63A-1D7CB6AC1497} = {7FCE376B-5521-4823-A1DC-032B273F3360}
+		{1AF5C60A-98A7-4601-87E5-B8CF255666B4} = {DA9518C1-9BAF-412C-871C-AFAD3160BBE6}
+		{BDEC8325-1748-4C8F-8079-62DCA800ED1D} = {DA9518C1-9BAF-412C-871C-AFAD3160BBE6}
+		{BA61C085-323E-4C69-952F-8C16899BC524} = {DA9518C1-9BAF-412C-871C-AFAD3160BBE6}
+		{60FEDFE5-6B27-4CB9-920C-01C4229C61D1} = {1AF5C60A-98A7-4601-87E5-B8CF255666B4}
+		{FAEC212C-5F7E-4F70-9B8E-91EFB8587FF6} = {DA9518C1-9BAF-412C-871C-AFAD3160BBE6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {85F327E6-FDB4-479E-B1A9-069D2CC669C6}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,63 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+resources:
+- repo: self
+
+variables:
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: 'Local'
+#      demands:
+#      - KAFKA_HOME
+#      - COMPUTERNAME -equals WL11469
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          docker build -f .\SmhiApi\Dockerfile --force-rm -t smhiapi .
+          docker build -f .\SmhiExtractor\Dockerfile --force-rm -t smhiextractor .
+          docker tag smhiapi:latest $(registryhost)/smhiapi:$(Build.BuildId)
+          docker tag smhiextractor:latest $(registryhost)/smhiextractor:$(Build.BuildId)
+          docker push $(registryhost)/smhiapi:$(Build.BuildId)
+          docker push $(registryhost)/smhiextractor:$(Build.BuildId)
+        workingDirectory: '$(Build.SourcesDirectory)'
+    - task: replacetokens@3
+      inputs:
+        rootDirectory: '$(Build.SourcesDirectory)/Deploy'
+        targetFiles: '**/deployment.yaml'
+        encoding: 'auto'
+        writeBOM: true
+        actionOnMissing: 'warn'
+        keepToken: false
+        tokenPrefix: '#{'
+        tokenSuffix: '}#'
+        useLegacyPattern: false
+        enableTelemetry: true
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/Deploy'
+        Contents: '**/*.yaml'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+    - task: PublishTestResults@2
+      inputs:
+        testResultsFormat: 'VSTest'
+        testResultsFiles: '**/*.trx'
+        mergeTestResults: true
+        testRunTitle: 'Test run title'
